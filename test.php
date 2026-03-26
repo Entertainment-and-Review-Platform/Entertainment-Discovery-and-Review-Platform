@@ -1,2 +1,0 @@
-//comment g
-<?php 
