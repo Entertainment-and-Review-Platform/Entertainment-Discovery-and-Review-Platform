@@ -1,49 +1,87 @@
 <?php get_header(); ?>
 
-<main style="padding: 40px; max-width: 900px; margin: 0 auto;">
+<main class="single-review-page">
 
-    <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-        <h1><?php the_title(); ?></h1>
+<?php
+$rating = get_field('rating');
+$stars  = round($rating / 2);
+$related_show = get_field('related_showmovie');
+?>
 
-        <?php if ( has_post_thumbnail() ) : ?>
-            <div style="margin: 20px 0;">
-                <?php the_post_thumbnail('medium'); ?>
+<div class="single-review-container">
+
+    <div class="single-review-layout">
+
+        <!-- LEFT SIDE -->
+        <div class="single-review-left">
+
+            <h1 class="single-review-title"><?php the_title(); ?></h1>
+
+            <div class="single-review-text">
+                <?php the_content(); ?>
             </div>
-        <?php endif; ?>
 
-        <div style="margin-bottom: 20px;">
-            <?php the_content(); ?>
+            <?php if ( has_post_thumbnail() ) : ?>
+                <div class="single-review-poster">
+                    <?php the_post_thumbnail('large'); ?>
+                </div>
+            <?php endif; ?>
+
         </div>
 
-        <hr style="margin: 30px 0;">
+        <!-- RIGHT SIDE -->
+        <div class="single-review-right">
 
-        <h2>Review Details</h2>
+            <div class="single-review-panel">
 
-        <p><strong>Rating:</strong> <?php the_field('rating'); ?>/10</p>
-        <p><strong>Review Type:</strong> <?php the_field('review_type'); ?></p>
+                <div class="review-stars">
+                    <?php for ( $i = 1; $i <= 5; $i++ ) : ?>
+                        <span class="star <?php echo ($i <= $stars) ? 'filled' : ''; ?>">★</span>
+                    <?php endfor; ?>
+                </div>
 
-        <?php
-        $related_show = get_field('related_showmovie');
-        if ( $related_show ) :
-        ?>
-        <p>
-            <strong>Related Show / Movie:</strong>
-            <a href="<?php echo esc_url( get_permalink( $related_show->ID ) ); ?>">
-            <?php echo esc_html( get_the_title( $related_show->ID ) ); ?>
-        </a>
-    </p>
-    <?php endif; ?>
+                <div class="single-review-highlight">
+                    <?php echo wp_trim_words( get_the_content(), 20 ); ?>
+                </div>
 
-        <?php if ( get_field('embedded_trailer') ) : ?>
-            <p>
-                <strong>Trailer:</strong>
-                <a href="<?php the_field('embedded_trailer'); ?>" target="_blank">Watch Trailer</a>
-            </p>
-        <?php endif; ?>
+                <?php if ( $related_show ) : ?>
+                    <p class="single-review-related">
+                        <strong>Related Show / Movie:</strong><br>
+                        <a href="<?php echo esc_url( get_permalink( $related_show->ID ) ); ?>">
+                            <?php echo esc_html( get_the_title( $related_show->ID ) ); ?>
+                        </a>
+                    </p>
+                <?php endif; ?>
 
-    <?php endwhile; endif; ?>
+                <div class="single-review-actions">
+
+                    <a href="<?php echo esc_url( get_post_type_archive_link('reviews') ); ?>" class="single-review-btn back-btn">
+                        Back to Reviews
+                    </a>
+
+                    <?php if ( get_field('embedded_trailer') ) : ?>
+                        <a href="<?php the_field('embedded_trailer'); ?>" target="_blank" class="single-review-btn trailer-btn">
+                            Watch Trailer
+                        </a>
+                    <?php endif; ?>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<?php endwhile; endif; ?>
 
 </main>
 
 <?php get_footer(); ?>
+
+
+

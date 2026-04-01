@@ -1,45 +1,67 @@
 <?php get_header(); ?>
 
-<main style="padding: 40px; max-width: 1000px; margin: 0 auto;">
+<main class="reviews-archive-page">
+    <div class="reviews-archive-container">
 
-    <h1>Reviews</h1>
+        <h1 class="reviews-archive-title">Reviews</h1>
 
-    <?php if ( have_posts() ) : ?>
-        <?php while ( have_posts() ) : the_post(); ?>
-            <div style="margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #ccc;">
+        <?php if ( have_posts() ) : ?>
+            <div class="reviews-grid">
 
-                <h2>
-                    <a href="<?php the_permalink(); ?>">
-                        <?php the_title(); ?>
-                    </a>
-                </h2>
+                <?php while ( have_posts() ) : the_post(); ?>
+                    <?php
+                    $rating = get_field('rating');
+                    $stars = round($rating / 2);
+                    $related_show = get_field('related_showmovie');
+                    ?>
 
-                <p><?php the_excerpt(); ?></p>
+                    <article class="review-card">
+                        <a href="<?php the_permalink(); ?>" class="review-card-link">
+                            <div class="review-card-content">
 
-                <p><strong>Rating:</strong> <?php the_field('rating'); ?>/10</p>
-                <p><strong>Review Type:</strong> <?php the_field('review_type'); ?></p>
+                                <h2 class="review-card-title"><?php the_title(); ?></h2>
 
-                <?php
-                $related_show = get_field('related_showmovie');
-                if ( $related_show ) :?><p>
-                    <strong>Related Show / Movie:</strong>
-                    <a href="<?php echo get_permalink( $related_show->ID ); ?>">
-                        <?php echo esc_html( $related_show->post_title ); ?>
-                    </a>
-                </p>
-                <?php endif; ?>
+                                <p class="review-card-excerpt">
+                                    <?php echo esc_html( wp_trim_words( get_the_excerpt(), 22 ) ); ?>
+                                </p>
+
+                                <div class="review-stars">
+                                    <?php for ( $i = 1; $i <= 5; $i++ ) : ?>
+                                        <span class="star <?php echo ( $i <= $stars ) ? 'filled' : ''; ?>">★</span>
+                                    <?php endfor; ?>
+                                </div>
+
+                                <div class="review-card-meta">
+                                    <?php if ( get_field('review_type') ) : ?>
+                                        <span class="review-type-badge"><?php the_field('review_type'); ?></span>
+                                    <?php endif; ?>
+                                </div>
+
+                                <?php if ( $related_show ) : ?>
+                                    <p class="review-card-show">
+                                        <strong>Related Show / Movie:</strong>
+                                        <?php echo esc_html( get_the_title( $related_show->ID ) ); ?>
+                                    </p>
+                                <?php endif; ?>
+
+                                <span class="review-card-button">Read Review</span>
+
+                            </div>
+                        </a>
+                    </article>
+                <?php endwhile; ?>
 
             </div>
-        <?php endwhile; ?>
 
-        <div style="margin-top: 30px;">
-            <?php the_posts_pagination(); ?>
-        </div>
+            <div class="reviews-pagination">
+                <?php the_posts_pagination(); ?>
+            </div>
 
-    <?php else : ?>
-        <p>No reviews found.</p>
-    <?php endif; ?>
+        <?php else : ?>
+            <p>No reviews found.</p>
+        <?php endif; ?>
 
+    </div>
 </main>
 
 <?php get_footer(); ?>
