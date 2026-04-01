@@ -1,46 +1,34 @@
 <?php get_header(); ?>
 
-<main style="padding: 40px; max-width: 1000px; margin: 0 auto;">
+<div class="container">
+    <h1 class="page-title">Browse Entertainment</h1>
 
-    <h1>Shows / Movies</h1>
+    <div class="content-grid">
 
-    <?php if ( have_posts() ) : ?>
-        <?php while ( have_posts() ) : the_post(); ?>
-            <div style="margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #ccc;">
+        <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-                <h2>
-                    <a href="<?php the_permalink(); ?>">
-                        <?php the_title(); ?>
-                    </a>
-                </h2>
+            <div class="content-card">
+                <a href="<?php the_permalink(); ?>">
 
-                <?php if ( has_post_thumbnail() ) : ?>
-                    <div style="margin: 15px 0;">
-                        <?php the_post_thumbnail('thumbnail'); ?>
-                    </div>
-                <?php endif; ?>
-
-                <p><?php the_excerpt(); ?></p>
-
-                <p><strong>Content Type:</strong> <?php the_field('content_type'); ?></p>
-                <p><strong>Genre:</strong> <?php the_field('genre'); ?></p>
-                <p><strong>Release Year:</strong> <?php the_field('release_year'); ?></p>
-                
-                <?php if ( get_field('content_type') !== 'Movie' ) : ?>
-                    <p><strong>Number of Seasons:</strong> <?php the_field('number_of_seasons'); ?></p>
+                    <?php if (has_post_thumbnail()) : ?>
+                        <div class="card-image">
+                            <?php the_post_thumbnail('medium'); ?>
+                        </div>
                     <?php endif; ?>
 
+                    <h3><?php the_title(); ?></h3>
+
+                    <p>
+                        <?php the_field('content_type'); ?> • 
+                        <?php the_field('release_year'); ?>
+                    </p>
+
+                </a>
             </div>
-        <?php endwhile; ?>
 
-        <div style="margin-top: 30px;">
-            <?php the_posts_pagination(); ?>
-        </div>
+        <?php endwhile; endif; ?>
 
-    <?php else : ?>
-        <p>No shows or movies found.</p>
-    <?php endif; ?>
-
-</main>
+    </div>
+</div>
 
 <?php get_footer(); ?>

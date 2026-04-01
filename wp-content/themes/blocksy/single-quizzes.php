@@ -16,16 +16,37 @@
 
         <p><strong><?php the_field('question_1'); ?></strong></p>
 
-        <form id="quiz-form" style="margin-top: 20px;">
-            <p><label><input type="radio" name="quiz_answer" value="a"> <?php the_field('option_a'); ?></label></p>
-            <p><label><input type="radio" name="quiz_answer" value="b"> <?php the_field('option_b'); ?></label></p>
-            <p><label><input type="radio" name="quiz_answer" value="c"> <?php the_field('option_c'); ?></label></p>
-            <p><label><input type="radio" name="quiz_answer" value="d"> <?php the_field('option_d'); ?></label></p>
+        <div class="quiz-answers">
 
-            <button type="button" id="show-result-btn" style="margin-top: 20px; padding: 10px 20px; cursor: pointer; background-color: #ADD8E6; color: white; transition: text-shadow 0.3s;" onmouseover="this.style.textShadow='0 0 10px black'" onmouseout="this.style.textShadow='none'">
-                See My Result
-            </button>
-        </form>
+            <?php if ( get_field('option_a') ) : ?>
+                <div class="quiz-option" data-option="a">
+                    <?php the_field('option_a'); ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if ( get_field('option_b') ) : ?>
+                <div class="quiz-option" data-option="b">
+                    <?php the_field('option_b'); ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if ( get_field('option_c') ) : ?>
+                <div class="quiz-option" data-option="c">
+                    <?php the_field('option_c'); ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if ( get_field('option_d') ) : ?>
+                <div class="quiz-option" data-option="d">
+                    <?php the_field('option_d'); ?>
+                </div>
+            <?php endif; ?>
+
+        </div>
+
+        <button id="show-result-btn" class="quiz-result-button" type="button">
+            See My Result
+        </button>
 
         <div id="quiz-result" style="display: none; margin-top: 40px;">
             <hr style="margin: 30px 0;">
@@ -50,27 +71,31 @@
 
         <script>
             document.addEventListener('DOMContentLoaded', function () {
+                let selectedAnswer = null;
+
+                const options = document.querySelectorAll('.quiz-option');
                 const button = document.getElementById('show-result-btn');
                 const resultBox = document.getElementById('quiz-result');
-                const answers = document.querySelectorAll('input[name="quiz_answer"]');
 
-                button.addEventListener('click', function () {
-                    let selected = false;
-
-                    answers.forEach(function(answer) {
-                        if (answer.checked) {
-                            selected = true;
-                        }
+                options.forEach(option => {
+                    option.addEventListener('click', function () {
+                        options.forEach(o => o.classList.remove('selected'));
+                        this.classList.add('selected');
+                        selectedAnswer = this.getAttribute('data-option');
                     });
-
-                    if (!selected) {
-                        alert('Please select an answer before viewing your result.');
-                        return;
-                    }
-
-                    resultBox.style.display = 'block';
-                    resultBox.scrollIntoView({ behavior: 'smooth' });
                 });
+
+                if (button) {
+                    button.addEventListener('click', function () {
+                        if (!selectedAnswer) {
+                            alert('Please select an answer first.');
+                            return;
+                        }
+
+                        resultBox.style.display = 'block';
+                        resultBox.scrollIntoView({ behavior: 'smooth' });
+                    });
+                }
             });
         </script>
 
