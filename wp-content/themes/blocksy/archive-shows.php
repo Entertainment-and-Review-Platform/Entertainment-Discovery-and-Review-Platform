@@ -22,15 +22,13 @@
 
                 <p><?php the_excerpt(); ?></p>
 
+                <p><strong>Content Type:</strong> <?php the_field('content_type'); ?></p>
                 <p><strong>Genre:</strong> <?php the_field('genre'); ?></p>
                 <p><strong>Release Year:</strong> <?php the_field('release_year'); ?></p>
-                <p><strong>Number of Seasons:</strong> <?php the_field('number_of_seasons'); ?></p>
-
-                <?php if ( get_field('trailer_link') ) : ?>
-                    <p>
-                        <a href="<?php the_field('trailer_link'); ?>" target="_blank">Watch Trailer</a>
-                    </p>
-                <?php endif; ?>
+                
+                <?php if ( get_field('content_type') !== 'Movie' ) : ?>
+                    <p><strong>Number of Seasons:</strong> <?php the_field('number_of_seasons'); ?></p>
+                    <?php endif; ?>
 
             </div>
         <?php endwhile; ?>

@@ -86,3 +86,25 @@ function create_quizzes_post_type() {
 }
 add_action('init', 'create_quizzes_post_type');
 
+/* function homepage_carousel_script() {
+    if ( is_front_page() ) {
+        ?>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                let slides = document.querySelectorAll(".hero-slide");
+                let index = 0;
+
+                function showSlide() {
+                    slides.forEach(slide => slide.classList.remove("active"));
+                    slides[index].classList.add("active");
+                    index = (index + 1) % slides.length;
+                }
+
+                setInterval(showSlide, 4000);
+            });
+        </script>
+        <?php
+    }
+}
+add_action('wp_footer', 'homepage_carousel_script');
+*/ 
