@@ -126,4 +126,28 @@ function custom_breadcrumbs() {
     echo '</div>';
 }
 
+function erp_login_redirect_by_role( $redirect_to, $request, $user ) {
+
+    if ( isset( $user->roles ) && is_array( $user->roles ) ) {
+
+        // Admins and Editors go to dashboard
+        if ( in_array( 'administrator', $user->roles ) || in_array( 'editor', $user->roles ) ) {
+            return admin_url();
+        }
+
+        // Subscribers go to homepage
+        if ( in_array( 'subscriber', $user->roles ) ) {
+            return home_url();
+        }
+    }
+
+    return home_url();
+}
+add_filter( 'login_redirect', 'erp_login_redirect_by_role', 10, 3 );
+
+function erp_logout_redirect() {
+    wp_safe_redirect( home_url() );
+    exit;
+}
+add_action( 'wp_logout', 'erp_logout_redirect' );
 
