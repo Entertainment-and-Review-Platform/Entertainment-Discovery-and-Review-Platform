@@ -3,14 +3,7 @@
 <main class="home-page">
 
     <?php
-    /*
-    ============================================
-    CUSTOM QUERY 1: FEATURED SHOWS HERO CAROUSEL
-    Purpose:
-    Retrieve the latest 3 Shows posts for display
-    in the homepage hero carousel.
-    ============================================
-    */
+    /*Custom Query 1: Featured Shows / Movies Carousel*/
     $featured_args = array(
         'post_type'      => 'shows',
         'posts_per_page' => 3
@@ -147,14 +140,7 @@
     <?php endif; ?>
 
     <?php
-    /*
-    ============================================
-    CUSTOM QUERY 2: LATEST SHOWS / MOVIES SECTION
-    Purpose:
-    Retrieve the latest 6 Shows posts and display
-    them in the homepage content grid.
-    ============================================
-    */
+    /*Custom Query 2: Latest Shows / Movies Grid Section*/
     $shows_args = array(
         'post_type'      => 'shows',
         'posts_per_page' => 6
@@ -191,15 +177,7 @@
     </section>
 
     <?php
-    /*
-    ============================================
-    CUSTOM QUERY 3: LATEST REVIEWS SECTION
-    Purpose:
-    Retrieve the latest 3 Reviews posts for the
-    homepage and display custom field data such
-    as rating and related show/movie.
-    ============================================
-    */
+    /*Custom Query 3: Latest Reviews Section*/
     $reviews_args = array(
         'post_type'      => 'reviews',
         'posts_per_page' => 3
@@ -237,14 +215,7 @@
     </section>
 
     <?php
-    /*
-    ============================================
-    CUSTOM QUERY 4: FEATURED QUIZ SECTION
-    Purpose:
-    Retrieve the latest Quiz post and display it
-    as a featured interactive section on the homepage.
-    ============================================
-    */
+    /*Custom Query 4: Featured Quiz Section*/
     $quiz_args = array(
         'post_type'      => 'quizzes',
         'posts_per_page' => 1

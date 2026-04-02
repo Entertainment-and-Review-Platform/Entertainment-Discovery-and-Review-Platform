@@ -9,7 +9,6 @@
 
             <div class="single-show-layout">
 
-                <!-- LEFT SIDE -->
                 <div class="single-show-left">
 
                     <h1 class="single-show-title"><?php the_title(); ?></h1>
@@ -26,7 +25,6 @@
 
                 </div>
 
-                <!-- RIGHT SIDE -->
                 <div class="single-show-right">
 
                     <div class="single-show-panel">

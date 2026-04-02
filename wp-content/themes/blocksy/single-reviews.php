@@ -15,7 +15,6 @@ $related_show = get_field('related_showmovie');
 
     <div class="single-review-layout">
 
-        <!-- LEFT SIDE -->
         <div class="single-review-left">
 
             <h1 class="single-review-title"><?php the_title(); ?></h1>
@@ -32,7 +31,6 @@ $related_show = get_field('related_showmovie');
 
         </div>
 
-        <!-- RIGHT SIDE -->
         <div class="single-review-right">
 
             <div class="single-review-panel">

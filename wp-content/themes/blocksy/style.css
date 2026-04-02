@@ -17,9 +17,7 @@ Tags: accessibility-ready, blog, block-patterns, e-commerce, wide-blocks, block-
 */
 
 /*Custom Project Styles- Backup of Additional CSS in WordPress*/
-/* =========================
-   COLOR PALETTE
-========================= */
+/* Global Color Pallete */
 :root {
     --navy-main: #071a2d;
     --navy-dark: #04111f;
@@ -35,9 +33,7 @@ Tags: accessibility-ready, blog, block-patterns, e-commerce, wide-blocks, block-
     --border-soft: rgba(255,255,255,0.08);
 }
 
-/* =========================
-   GLOBAL TEXT / LINKS
-========================= */
+/* Global Text/Links*/
 body {
     color: var(--text-light);
     background: var(--navy-main);
@@ -74,9 +70,7 @@ body hr {
     border-color: rgba(255,255,255,0.15);
 }
 
-/* =========================
-   HEADER / NAVBAR
-========================= */
+/* Header/Navbar */
 header#header,
 .site-header,
 .ct-header,
@@ -117,9 +111,7 @@ header#header svg:hover,
     fill: var(--orange-accent) !important;
 }
 
-/* =========================
-   GLOBAL PAGE BACKGROUND FIX
-========================= */
+/* Global Background*/
 body.home,
 body.post-type-archive-shows,
 body.single-shows,
@@ -171,9 +163,7 @@ body.page .site-main a:hover {
     color: var(--orange-accent);
 }
 
-/* =========================
-   HOMEPAGE WRAPPER
-========================= */
+/* Homepage Wrapper */
 body.home .home-page {
     background: var(--navy-main) !important;
     color: var(--text-light) !important;
@@ -181,12 +171,10 @@ body.home .home-page {
     padding-bottom: 60px;
 }
 
-/* =========================
-   HERO SECTION
-========================= */
+/* Hero Section */
 body.home .hero-section {
-    padding: 30px 40px 60px !important; /* reduced top padding */
-    margin-top: -20px; /* pulls it up under header */
+    padding: 30px 40px 60px !important; 
+    margin-top: -20px; 
     background: var(--navy-hero) !important;
 }
 body.home header#header {
@@ -256,9 +244,7 @@ body.home .hero-poster img {
     box-shadow: 0 10px 30px rgba(0,0,0,0.35);
 }
 
-/* =========================
-   BUTTONS
-========================= */
+/* Buttons*/
 body.home .btn-primary,
 body.home .btn-secondary,
 .quiz-result-button {
@@ -292,9 +278,7 @@ body.home .btn-secondary:hover {
     color: #ffffff !important;
 }
 
-/* =========================
-   HOMEPAGE SECTIONS
-========================= */
+/* Homepage Sections */
 body.home .homepage-section {
     max-width: 1200px;
     margin: 0 auto;
@@ -320,9 +304,7 @@ body.home .homepage-section h2::before {
     border-radius: 6px;
 }
 
-/* =========================
-   GRIDS / CARDS
-========================= */
+/* Grids / Cards */
 body.home .card-grid,
 .content-grid {
     display: grid;
@@ -384,9 +366,7 @@ body.home .featured-quiz-card a:hover,
     color: var(--orange-accent) !important;
 }
 
-/* =========================
-   QUIZ BARS
-========================= */
+/* Quiz Answers */
 .quiz-answers {
     margin-top: 30px;
     display: flex;
@@ -430,9 +410,7 @@ body.home .featured-quiz-card a:hover,
     background: var(--purple-hover);
 }
 
-/* =========================
-   QUIZ ARCHIVE PAGE
-========================= */
+/* Quiz Archive Page */
 .quiz-archive-page {
     background: transparent;
     min-height: 100vh;
@@ -520,9 +498,7 @@ body.home .featured-quiz-card a:hover,
     background: #e56d00;
 }
 
-/* =========================
-   HOMEPAGE HERO CAROUSEL
-========================= */
+/* Homepage Hero Carousel */
 body.home .hero-carousel {
     position: relative;
     max-width: 1200px;
@@ -595,9 +571,7 @@ body.home .hero-dot.active {
     background: var(--orange-accent);
 }
 
-/* =========================
-   REVIEWS ARCHIVE PAGE
-========================= */
+/* Reviews Archive Page */
 .reviews-archive-page {
     background: transparent;
     min-height: 100vh;
@@ -743,9 +717,7 @@ body.home .hero-dot.active {
     color: #ffffff !important;
 }
 
-/* =========================
-   STAR RATING
-========================= */
+/* Star Rating */
 .review-stars {
     display: flex;
     align-items: center;
@@ -763,9 +735,7 @@ body.home .hero-dot.active {
     text-shadow: 0 0 6px rgba(255,180,0,0.6);
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* Mobile */
 @media (max-width: 900px) {
     body.home .hero-overlay {
         flex-direction: column;
@@ -833,9 +803,7 @@ body.home .hero-dot.active {
     }
 }
 
-/* =========================
-   SINGLE REVIEW PAGE
-========================= */
+/* Single Review Page */
 .single-review-page {
     background: transparent;
     min-height: 100vh;
@@ -957,9 +925,7 @@ body.home .hero-dot.active {
     color: #ffffff !important;
 }
 
-/* =========================
-   SINGLE REVIEW MOBILE
-========================= */
+/* Single Review Mobile */
 @media (max-width: 900px) {
     .single-review-top {
         grid-template-columns: 1fr;
@@ -974,9 +940,7 @@ body.home .hero-dot.active {
         font-size: 2rem;
     }
 }
-/* =========================
-   REVIEWS ARCHIVE FINAL FIX
-========================= */
+/* Reviews Archive */
 
 .reviews-grid .review-card-content {
     display: flex !important;
@@ -1031,9 +995,7 @@ body.home .hero-dot.active {
 }
 
 
-/* =========================
-   REVIEWS ARCHIVE FINAL CLEAN FIX
-========================= */
+/* Reviews Archive Fix */
 .reviews-grid {
     gap: 32px !important;
 }
@@ -1087,9 +1049,8 @@ body.home .hero-dot.active {
     align-self: flex-start !important;
 }
 
-/* =========================
-   SINGLE REVIEW 2-COLUMN LAYOUT
-========================= */
+/* Single Review 2 column layout*/
+   
 .single-review-layout {
     display: grid;
     grid-template-columns: 1fr 380px;
@@ -1097,7 +1058,6 @@ body.home .hero-dot.active {
     align-items: start;
 }
 
-/* LEFT SIDE */
 .single-review-left {
     padding-right: 20px;
     border-right: 1px solid rgba(255,255,255,0.08);
@@ -1122,7 +1082,6 @@ body.home .hero-dot.active {
     margin-top: 20px;
 }
 
-/* RIGHT SIDE PANEL */
 .single-review-panel {
     background: #102a43;
     border: 1px solid rgba(255,255,255,0.08);
@@ -1152,7 +1111,7 @@ body.home .hero-dot.active {
     flex-wrap: wrap;
 }
 
-/* MOBILE */
+/* Mobile */
 @media (max-width: 900px) {
     .single-review-layout {
         grid-template-columns: 1fr;
@@ -1164,9 +1123,7 @@ body.home .hero-dot.active {
     }
 }
 
-/* =========================
-   GLOBAL ARCHIVE PAGINATION
-========================= */
+/* Global archive pagination */
 .archive-pagination {
     margin-top: 35px;
 }
@@ -1195,9 +1152,7 @@ body.home .hero-dot.active {
     color: #ffffff !important;
 }
 
-/* =========================
-   BREADCRUMBS
-========================= */
+/* Breadcrumbs */
 .breadcrumbs {
     margin-bottom: 20px;
     font-size: 0.9rem;
@@ -1213,9 +1168,7 @@ body.home .hero-dot.active {
     color: #ff7a00;
 }
 
-/* =========================
-   INTERACTIVE REVIEW RATING
-========================= */
+/* Interactive Review Rating */
 .interactive-review-rating {
     margin: 12px 0 18px;
 }
@@ -1272,9 +1225,7 @@ body.home .hero-dot.active {
 .trailer-btn:hover {
     background: #444;
 }
-/* =========================
-   SINGLE SHOW PAGE
-========================= */
+/* Single Show Page */
 .single-show-page {
     background: transparent;
     min-height: 100vh;
@@ -1467,9 +1418,7 @@ body.home .hero-dot.active {
     color: #ffffff !important;
 }
 
-/* =========================
-   SINGLE SHOW MOBILE
-========================= */
+/* Single Show Mobile */
 @media (max-width: 900px) {
     .single-show-layout {
         grid-template-columns: 1fr;
@@ -1489,10 +1438,7 @@ body.home .hero-dot.active {
         max-width: 260px;
     }
 }
-/* =========================
-   DISCOVER PAGE - NETFLIX STYLE
-   Page ID: 204
-========================= */
+/* Discover Page*/
 .page-id-204 .entry-content,
 .page-id-204 .ct-container,
 .page-id-204 .site-main {
@@ -1670,24 +1616,19 @@ body.home .hero-dot.active {
     }
 }
 
-/* =========================
-   LOGIN PAGE POLISH
-========================= */
+/* Login Page */
 
-/* Login page background */
 body.page-login,
 body.login,
 .tml-login {
     background: linear-gradient(180deg, #071a2d 0%, #0a2540 100%) !important;
 }
 
-/* Hide the big page title on the left */
 .page-login .entry-title,
 .page-login h1.entry-title {
     display: none !important;
 }
 
-/* Center the content area properly */
 .page-login .entry-content,
 .page-login .site-main,
 .page-login .ct-container {
@@ -1697,7 +1638,6 @@ body.login,
     width: 100%;
 }
 
-/* Main login card */
 .tml {
     width: 100%;
     max-width: 420px;
@@ -1710,7 +1650,6 @@ body.login,
     backdrop-filter: blur(8px);
 }
 
-/* Title inside login form */
 .tml h1,
 .tml-title {
     text-align: center;
@@ -1718,13 +1657,11 @@ body.login,
     color: #ffffff !important;
 }
 
-/* Form labels */
 .tml label {
     color: #ffffff !important;
     font-weight: 600;
 }
 
-/* Inputs */
 .tml input[type="text"],
 .tml input[type="email"],
 .tml input[type="password"] {
@@ -1738,7 +1675,6 @@ body.login,
     box-sizing: border-box;
 }
 
-/* Input focus */
 .tml input[type="text"]:focus,
 .tml input[type="email"]:focus,
 .tml input[type="password"]:focus {
@@ -1747,14 +1683,12 @@ body.login,
     box-shadow: 0 0 0 2px rgba(255,122,0,0.15);
 }
 
-/* Remember me text */
 .tml .tml-rememberme-wrap,
 .tml .tml-rememberme-wrap label,
 .tml .tml-rememberme-wrap span {
     color: #d9e2ec !important;
 }
 
-/* Submit button */
 .tml input[type="submit"],
 .tml button,
 .tml .button,
@@ -1770,7 +1704,6 @@ body.login,
     transition: 0.25s ease;
 }
 
-/* Button hover */
 .tml input[type="submit"]:hover,
 .tml button:hover,
 .tml .button:hover,
@@ -1778,7 +1711,6 @@ body.login,
     background: #e56d00;
 }
 
-/* Links */
 .tml a {
     color: #d9e2ec !important;
     text-decoration: none;
@@ -1789,7 +1721,6 @@ body.login,
     color: #ff7a00 !important;
 }
 
-/* Register / lost password area */
 .tml .tml-links,
 .tml ul,
 .tml li {
@@ -1797,7 +1728,6 @@ body.login,
     color: #d9e2ec !important;
 }
 
-/* Mobile */
 @media (max-width: 768px) {
     .tml {
         max-width: 92%;
@@ -1806,11 +1736,8 @@ body.login,
     }
 }
 
-/* =========================
-   DISCOVER CARD MATCH FIX
-========================= */
+/* Discover Card Match Fix */
 
-/* Make Discover plugin cards match site cards better */
 .page-id-204 .ers-grid {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
     gap: 24px !important;
@@ -1864,7 +1791,6 @@ body.login,
     color: #ffffff !important;
 }
 
-/* Make featured quiz card not look too stretched */
 .page-id-204 .ers-grid:last-of-type .ers-card {
     min-height: 240px;
 }
