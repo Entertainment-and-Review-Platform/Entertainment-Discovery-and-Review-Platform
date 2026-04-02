@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 
 <main style="padding: 40px; max-width: 900px; margin: 0 auto;">
+    <?php custom_breadcrumbs(); ?>
 
     <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 

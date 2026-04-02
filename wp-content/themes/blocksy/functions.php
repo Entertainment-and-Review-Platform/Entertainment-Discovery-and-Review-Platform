@@ -55,7 +55,7 @@ function create_reviews_post_type() {
         'public' => true,
         'has_archive' => true,
         'menu_icon' => 'dashicons-star-filled',
-        'supports' => array('title', 'editor', 'thumbnail'),
+        'supports' => array('title', 'editor', 'thumbnail', 'comments'),
         'rewrite' => array('slug' => 'reviews'),
         'show_in_rest' => true
     ));
@@ -86,25 +86,44 @@ function create_quizzes_post_type() {
 }
 add_action('init', 'create_quizzes_post_type');
 
-/* function homepage_carousel_script() {
-    if ( is_front_page() ) {
-        ?>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                let slides = document.querySelectorAll(".hero-slide");
-                let index = 0;
+function custom_breadcrumbs() {
 
-                function showSlide() {
-                    slides.forEach(slide => slide.classList.remove("active"));
-                    slides[index].classList.add("active");
-                    index = (index + 1) % slides.length;
-                }
+    echo '<div class="breadcrumbs">';
 
-                setInterval(showSlide, 4000);
-            });
-        </script>
-        <?php
+    echo '<a href="' . home_url() . '">Home</a> > ';
+
+    if ( is_post_type_archive('shows') ) {
+        echo 'Shows';
     }
+
+    elseif ( is_singular('shows') ) {
+        echo '<a href="' . get_post_type_archive_link('shows') . '">Shows</a> > ';
+        the_title();
+    }
+
+    elseif ( is_post_type_archive('reviews') ) {
+        echo 'Reviews';
+    }
+
+    elseif ( is_singular('reviews') ) {
+        echo '<a href="' . get_post_type_archive_link('reviews') . '">Reviews</a> > ';
+        the_title();
+    }
+
+    elseif ( is_post_type_archive('quizzes') ) {
+        echo 'Quizzes';
+    }
+
+    elseif ( is_singular('quizzes') ) {
+        echo '<a href="' . get_post_type_archive_link('quizzes') . '">Quizzes</a> > ';
+        the_title();
+    }
+
+    elseif ( is_page() ) {
+        the_title();
+    }
+
+    echo '</div>';
 }
-add_action('wp_footer', 'homepage_carousel_script');
-*/ 
+
+

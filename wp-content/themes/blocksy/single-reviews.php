@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 
 <main class="single-review-page">
+    <?php custom_breadcrumbs(); ?>
 
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
@@ -76,6 +77,9 @@ $related_show = get_field('related_showmovie');
     </div>
 
 </div>
+<?php if ( comments_open() || get_comments_number() ) : ?>
+    <?php comments_template(); ?>
+<?php endif; ?>
 
 <?php endwhile; endif; ?>
 

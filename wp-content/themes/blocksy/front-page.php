@@ -3,7 +3,14 @@
 <main class="home-page">
 
     <?php
-    // HERO CAROUSEL (Featured Shows)
+    /*
+    ============================================
+    CUSTOM QUERY 1: FEATURED SHOWS HERO CAROUSEL
+    Purpose:
+    Retrieve the latest 3 Shows posts for display
+    in the homepage hero carousel.
+    ============================================
+    */
     $featured_args = array(
         'post_type'      => 'shows',
         'posts_per_page' => 3
@@ -58,11 +65,9 @@
                     <?php $slide_index++; ?>
                 <?php endwhile; wp_reset_postdata(); ?>
 
-                <!-- Navigation -->
                 <button class="hero-nav hero-prev">&#10094;</button>
                 <button class="hero-nav hero-next">&#10095;</button>
 
-                <!-- Dots -->
                 <div class="hero-dots">
                     <?php for ( $i = 0; $i < $slide_index; $i++ ) : ?>
                         <span class="hero-dot <?php echo $i === 0 ? 'active' : ''; ?>" data-slide="<?php echo $i; ?>"></span>
@@ -72,7 +77,6 @@
             </div>
         </section>
 
-        <!-- CAROUSEL SCRIPT -->
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 const slides = document.querySelectorAll('.hero-slide');
@@ -116,15 +120,19 @@
                     startAutoSlide();
                 }
 
-                nextBtn.addEventListener('click', () => {
-                    nextSlide();
-                    resetAutoSlide();
-                });
+                if (nextBtn) {
+                    nextBtn.addEventListener('click', () => {
+                        nextSlide();
+                        resetAutoSlide();
+                    });
+                }
 
-                prevBtn.addEventListener('click', () => {
-                    prevSlide();
-                    resetAutoSlide();
-                });
+                if (prevBtn) {
+                    prevBtn.addEventListener('click', () => {
+                        prevSlide();
+                        resetAutoSlide();
+                    });
+                }
 
                 dots.forEach((dot, index) => {
                     dot.addEventListener('click', () => {
@@ -136,11 +144,17 @@
                 startAutoSlide();
             });
         </script>
-
     <?php endif; ?>
 
     <?php
-    // Latest Shows / Movies
+    /*
+    ============================================
+    CUSTOM QUERY 2: LATEST SHOWS / MOVIES SECTION
+    Purpose:
+    Retrieve the latest 6 Shows posts and display
+    them in the homepage content grid.
+    ============================================
+    */
     $shows_args = array(
         'post_type'      => 'shows',
         'posts_per_page' => 6
@@ -160,6 +174,7 @@
                             <?php endif; ?>
                             <h3><?php the_title(); ?></h3>
                         </a>
+
                         <p><strong>Type:</strong> <?php the_field('content_type'); ?></p>
                         <p><strong>Genre:</strong> <?php the_field('genre'); ?></p>
                         <p><strong>Year:</strong> <?php the_field('release_year'); ?></p>
@@ -176,7 +191,15 @@
     </section>
 
     <?php
-    // Latest Reviews
+    /*
+    ============================================
+    CUSTOM QUERY 3: LATEST REVIEWS SECTION
+    Purpose:
+    Retrieve the latest 3 Reviews posts for the
+    homepage and display custom field data such
+    as rating and related show/movie.
+    ============================================
+    */
     $reviews_args = array(
         'post_type'      => 'reviews',
         'posts_per_page' => 3
@@ -214,7 +237,14 @@
     </section>
 
     <?php
-    // Featured Quiz
+    /*
+    ============================================
+    CUSTOM QUERY 4: FEATURED QUIZ SECTION
+    Purpose:
+    Retrieve the latest Quiz post and display it
+    as a featured interactive section on the homepage.
+    ============================================
+    */
     $quiz_args = array(
         'post_type'      => 'quizzes',
         'posts_per_page' => 1

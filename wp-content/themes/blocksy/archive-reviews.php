@@ -3,7 +3,7 @@
 <main class="reviews-archive-page">
     <div class="reviews-archive-container">
 
-        <h1 class="reviews-archive-title">Reviews</h1>
+        <?php custom_breadcrumbs(); ?>
 
         <?php if ( have_posts() ) : ?>
             <div class="reviews-grid">
@@ -53,8 +53,14 @@
 
             </div>
 
-            <div class="reviews-pagination">
-                <?php the_posts_pagination(); ?>
+            <div class="archive-pagination">
+                <?php
+                the_posts_pagination(array(
+                    'mid_size'  => 2,
+                    'prev_text' => '← Previous',
+                    'next_text' => 'Next →',
+                ));
+                ?>
             </div>
 
         <?php else : ?>
