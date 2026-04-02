@@ -1806,4 +1806,67 @@ body.login,
     }
 }
 
+/* =========================
+   DISCOVER CARD MATCH FIX
+========================= */
+
+/* Make Discover plugin cards match site cards better */
+.page-id-204 .ers-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+    gap: 24px !important;
+}
+
+.page-id-204 .ers-card {
+    background: #102a43 !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    border-radius: 16px !important;
+    padding: 24px !important;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.25) !important;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+.page-id-204 .ers-card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.35) !important;
+}
+
+.page-id-204 .ers-card h3 {
+    font-size: 1.5rem !important;
+    line-height: 1.2 !important;
+    margin: 0 0 14px !important;
+    color: #ffffff !important;
+}
+
+.page-id-204 .ers-card p {
+    color: #d9e2ec !important;
+    line-height: 1.55 !important;
+    margin-bottom: 16px !important;
+}
+
+.page-id-204 .ers-button {
+    display: inline-block !important;
+    padding: 10px 16px !important;
+    border-radius: 8px !important;
+    background: #ff7a00 !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+    margin-top: auto !important;
+    align-self: flex-start !important;
+}
+
+.page-id-204 .ers-button:hover {
+    background: #e56d00 !important;
+    color: #ffffff !important;
+}
+
+/* Make featured quiz card not look too stretched */
+.page-id-204 .ers-grid:last-of-type .ers-card {
+    min-height: 240px;
+}
+
 

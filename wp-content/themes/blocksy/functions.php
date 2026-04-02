@@ -90,41 +90,52 @@ function custom_breadcrumbs() {
 
     echo '<div class="breadcrumbs">';
 
-    echo '<a href="' . home_url() . '">Home</a> > ';
+    echo '<a href="' . home_url() . '">Home</a>';
 
     if ( is_post_type_archive('shows') ) {
-        echo 'Shows';
+        echo ' > Shows';
     }
 
     elseif ( is_singular('shows') ) {
-        echo '<a href="' . get_post_type_archive_link('shows') . '">Shows</a> > ';
+        echo ' > <a href="' . get_post_type_archive_link('shows') . '">Shows</a> > ';
         the_title();
     }
 
     elseif ( is_post_type_archive('reviews') ) {
-        echo 'Reviews';
+        echo ' > Reviews';
     }
 
     elseif ( is_singular('reviews') ) {
-        echo '<a href="' . get_post_type_archive_link('reviews') . '">Reviews</a> > ';
+        echo ' > <a href="' . get_post_type_archive_link('reviews') . '">Reviews</a> > ';
         the_title();
     }
 
     elseif ( is_post_type_archive('quizzes') ) {
-        echo 'Quizzes';
+        echo ' > Quizzes';
     }
 
     elseif ( is_singular('quizzes') ) {
-        echo '<a href="' . get_post_type_archive_link('quizzes') . '">Quizzes</a> > ';
+        echo ' > <a href="' . get_post_type_archive_link('quizzes') . '">Quizzes</a> > ';
         the_title();
     }
 
     elseif ( is_page() ) {
-        the_title();
+        global $post;
+
+        if ( $post->post_parent ) {
+            $ancestors = array_reverse( get_post_ancestors( $post->ID ) );
+
+            foreach ( $ancestors as $ancestor ) {
+                echo ' > <a href="' . get_permalink( $ancestor ) . '">' . get_the_title( $ancestor ) . '</a>';
+            }
+        }
+
+        echo ' > ' . get_the_title();
     }
 
     echo '</div>';
 }
+
 
 function erp_login_redirect_by_role( $redirect_to, $request, $user ) {
 
@@ -151,3 +162,13 @@ function erp_logout_redirect() {
 }
 add_action( 'wp_logout', 'erp_logout_redirect' );
 
+function ers_breadcrumbs_shortcode() {
+    ob_start();
+
+    if ( function_exists('custom_breadcrumbs') ) {
+        custom_breadcrumbs();
+    }
+
+    return ob_get_clean();
+}
+add_shortcode('ers_breadcrumbs', 'ers_breadcrumbs_shortcode');
